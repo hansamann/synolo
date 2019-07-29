@@ -16,6 +16,8 @@ sýnolo is Greek for "total" or "aggregate". This project is called sýnolo, as 
 
 ## Architecture Overview
 
+<img align="center" src="resources/architecture.png"/>
+
 ### GraphQL-Server
 
 ### GraphQL-Console
