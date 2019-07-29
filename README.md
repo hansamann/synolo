@@ -18,9 +18,15 @@ sýnolo is Greek for "total" or "aggregate". This project is called sýnolo, as 
 
 <img align="center" src="resources/architecture.png"/>
 
-### GraphQL-Server
+This repository consists of three sub-projects, each yielding a seperate docker image. For your conveniencer, docker images have been uploaded to docker hub and these images are refeenced from the default k8s resources which are part of these projects. 
 
-### GraphQL-Console
+Here's a quick overview with a description of each sub-project:
 
-### GraphQL-Console-API
+- __graphql-server__: This project includes a code for a Yoga-based GraphQL server. Yoga is a node.js based GraphQL server which is based on the popular Apollo GraphQL server. My specific implementation uses schema-stitching to combine individual GraphQL schema files (types directory) to one holistic GraphQL schema. For the resolvers, the same principle is used, e.g. all resolvers of the resolvers directory are combined into the resolvers of the GraphQL server. The types and resolvers directories are intended to be overwritten by a Kubernetes ConfigMap volume mount later. This effectively makes the types and resolvers editable by an external process, in this case the graphql-api via graphql-console.
+
+- __graphql-console__: This project includes a minimal and basic Vue-based UI for the Kyma console. It includes the Kyma resources necessary to add an item to the Kyma console and includes the basic UI for editing the list of available types and resolvers via simple HTML text areas. This UI communicates with the graphql-api.
+
+- __graphql-api__: The graphql-api uses the Kubernetes node.js API to load, edit and update the ConfigMaps for types and resolvers. It also enables the graphql-ui to restart the GraphqQL server, which essentially kills all pods of a graphql deployment for reloading them with the latest ConfigMaps. 
+
+
 
