@@ -1,0 +1,2 @@
+# synolo
+GraphQL for Kyma
