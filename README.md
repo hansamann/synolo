@@ -1,6 +1,8 @@
 # synolo - GraphQL for Project Kyma
 
 <img align="center" src="resources/synolo.png"/>
+
+
 > sýnolo (Greek)
 > total, aggregate, aggregation, mass, summation
 
