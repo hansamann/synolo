@@ -1,0 +1,7 @@
+type CommerceCategory {
+    id : ID
+    name : String
+    url : String
+    subcategories : [CommerceCategory]
+    products : [CommerceProduct]
+}

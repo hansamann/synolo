@@ -1,0 +1,6 @@
+type OrderEntry {
+    entryNumber: Int 
+    product : CommerceProduct
+    quantity : Int
+    totalPrice : CommercePrice
+}

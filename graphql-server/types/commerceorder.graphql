@@ -1,0 +1,10 @@
+type CommerceOrder {
+    id : ID
+    placed : String
+    status : String
+    total : CommercePrice
+    deliveryAddress : DeliveryAddress
+    deliveryMode : DeliveryMode
+    entries : [OrderEntry]
+}
+

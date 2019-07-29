@@ -1,0 +1,70 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graphql-server
+  namespace: stage
+  labels:
+    owner: hansamann
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: graphql-server
+  template:
+    metadata:
+      labels:
+        app: graphql-server
+      annotations:
+        "sidecar.istio.io/inject": "true"
+    spec:
+      containers:
+      - name: graphql-server
+        image: gcr.io/sap-hybris-labs/kyma-graphql-server:0.7.0
+        command: ['sh', '-c', 'cp /resolvers/* /usr/src/app/resolvers/ && yarn run start']
+        args : ["1000"]
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 4000
+        volumeMounts:
+        - name: resolvers
+          mountPath: /resolvers/
+        - name: types
+          mountPath: /usr/src/app/types/
+      volumes:
+      - name: resolvers
+        configMap:
+          name: graphql-resolvers
+      - name: types
+        configMap:
+          name: graphql-types
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: graphql-server
+  namespace: stage
+  labels:
+    owner: hansamann
+spec:
+  selector:
+    app: graphql-server
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 4000
+
+---
+apiVersion: gateway.kyma-project.io/v1alpha2
+kind: Api
+metadata:
+  name: graphql-server
+  namespace: stage
+  labels:
+    owner: hansamann
+spec:
+  hostname: graphql-server.mega.cluster.extend.cx.cloud.sap
+  service:
+    name: graphql-server
+    port: 80

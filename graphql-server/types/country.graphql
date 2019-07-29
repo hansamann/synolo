@@ -1,0 +1,10 @@
+type Country {
+    isocode: String
+    name: String
+}
+
+enum CountryType {
+  ALL
+  SHIPPING
+  BILLING
+}

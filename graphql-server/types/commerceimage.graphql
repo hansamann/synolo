@@ -1,0 +1,7 @@
+type CommerceImage {
+    url : String
+    alt : String
+    format : String
+    type : String
+    index : Int
+}

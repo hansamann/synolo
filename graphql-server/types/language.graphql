@@ -1,0 +1,6 @@
+type Language {
+    active: Boolean,
+    isocode: String
+    name: String
+    nativeName: String
+}

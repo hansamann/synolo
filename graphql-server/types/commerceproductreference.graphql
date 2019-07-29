@@ -1,0 +1,5 @@
+type CommerceProductReference {
+    type : String
+    target : CommerceProduct
+    preselected : Boolean
+}

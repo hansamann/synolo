@@ -1,0 +1,16 @@
+type DeliveryAddress {
+    id : ID
+    defaultAddress : Boolean
+    cellphone : String
+    companyName : String
+    country : Country
+    email : String
+    title : String
+    firstName : String
+    lastName : String
+    line1: String
+    line2: String
+    phone: String
+    town: String
+    postalCode: String
+}

@@ -1,0 +1,6 @@
+type DeliveryMode {
+    code: String
+    name: String
+    description: String
+    deliveryCost : CommercePrice
+}

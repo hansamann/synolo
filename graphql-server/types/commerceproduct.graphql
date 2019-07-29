@@ -1,0 +1,12 @@
+type CommerceProduct {
+    id : String
+    name : String
+    description : String
+    manufacturer : String
+    price : CommercePrice
+    categories : [CommerceCategory]
+    images(format: String, type: String, index: Int) : [CommerceImage]
+    reviews : [CommerceReview]
+    references : [CommerceProductReference]
+    stock : CommerceStock
+}

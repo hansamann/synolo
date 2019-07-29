@@ -1,0 +1,7 @@
+type Weather {
+    main : String
+    description : String
+    temp : Float
+    humidity : Int
+    wind : Float
+}

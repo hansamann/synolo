@@ -1,0 +1,17 @@
+apiVersion: servicecatalog.kyma-project.io/v1alpha1
+kind: ServiceBindingUsage
+metadata:
+  labels:
+    deployment: graphql-server
+    ServiceBinding: otivzjvgie
+  name: graphql-server-sbu
+  namespace: stage
+spec:
+  parameters:
+    envPrefix:
+      name: ""
+  serviceBindingRef:
+    name: otivzjvgie
+  usedBy:
+    kind: deployment
+    name: graphql-server

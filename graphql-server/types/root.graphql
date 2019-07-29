@@ -1,0 +1,13 @@
+type Query {
+    GATEWAY_URL : String
+    categories : [CommerceCategory]
+    category(id: String!): CommerceCategory
+    product(id: String!): CommerceProduct
+    languages(active: Boolean) : [Language]
+    countries(type: CountryType) : [Country]
+    weather(city: String, countrycode: String): Weather
+}
+
+type Mutation {
+    test : String
+}

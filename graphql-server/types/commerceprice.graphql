@@ -1,0 +1,5 @@
+type CommercePrice {
+    currencyIso : String
+    formattedValue : String
+    value : Float
+}

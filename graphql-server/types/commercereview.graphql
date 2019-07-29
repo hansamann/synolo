@@ -1,0 +1,13 @@
+type CommerceReview {
+    id : ID
+    comment : String
+    date : String
+    headline : String
+    principal : CommerceReviewPrincipal
+    rating : Int
+}
+
+type CommerceReviewPrincipal {
+    name : String
+    uid : String
+}

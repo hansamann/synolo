@@ -1,0 +1,4 @@
+type CommerceStock {
+    level : Int 
+    status : String
+}
