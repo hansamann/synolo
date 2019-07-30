@@ -1,0 +1,58 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graphql-api
+  namespace: stage
+  labels:
+    owner: hansamann
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: graphql-api
+  template:
+    metadata:
+      labels:
+        app: graphql-api
+      annotations:
+        "sidecar.istio.io/inject": "true"
+    spec:
+      serviceAccountName: graphql-api
+      containers:
+      - name: graphql-api
+        image: gcr.io/sap-hybris-labs/kyma-graphql-api:0.5.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: graphql-api
+  namespace: stage
+  labels:
+    owner: hansamann
+spec:
+  selector:
+    app: graphql-api
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3000
+
+---
+apiVersion: gateway.kyma-project.io/v1alpha2
+kind: Api
+metadata:
+  name: graphql-api
+  namespace: stage
+  labels:
+    owner: hansamann
+spec:
+  hostname: graphql-api.mega.cluster.extend.cx.cloud.sap
+  service:
+    name: graphql-api
+    port: 80

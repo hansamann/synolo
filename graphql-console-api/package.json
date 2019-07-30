@@ -1,0 +1,25 @@
+{
+  "name": "kymna-graphql-ui",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@kubernetes/client-node": "^0.8.2",
+    "@kyma-project/luigi-client": "^0.4.11",
+    "@kyma-project/luigi-core": "^0.4.11",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "fiori-fundamentals": "^1.5.7",
+    "hbs": "~4.0.1",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.30.0"
+  }
+}
