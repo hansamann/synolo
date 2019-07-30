@@ -1,0 +1,13 @@
+apiVersion: ui.kyma-project.io/v1alpha1
+kind: ClusterMicroFrontend
+metadata:
+  name: graphql-vue
+spec:
+  category: GraphQL
+  navigationNodes:
+  - label: Config
+    navigationPath: config
+    viewUrl: /
+  placement: namespace
+  version: 0.0.1
+  viewBaseUrl: https://graphql-vue.mega.cluster.extend.cx.cloud.sap

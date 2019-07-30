@@ -1,0 +1,57 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graphql-console-ui
+  namespace: stage
+  labels:
+    owner: hansamann
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: graphql-console-ui
+  template:
+    metadata:
+      labels:
+        app: graphql-console-ui
+      annotations:
+        "sidecar.istio.io/inject": "true"
+    spec:
+      containers:
+      - name: graphql-console-ui
+        image: gcr.io/sap-hybris-labs/kyma-graphql-console-ui:0.6.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: graphql-console-ui
+  namespace: stage
+  labels:
+    owner: hansamann
+spec:
+  selector:
+    app: graphql-console-ui
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+
+---
+apiVersion: gateway.kyma-project.io/v1alpha2
+kind: Api
+metadata:
+  name: graphql-console-ui
+  namespace: stage
+  labels:
+    owner: hansamann
+spec:
+  hostname: graphql-console-ui.mega.cluster.extend.cx.cloud.sap
+  service:
+    name: graphql-console-ui
+    port: 80
