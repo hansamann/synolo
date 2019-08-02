@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: graphql-console-ui
-        image: gcr.io/sap-hybris-labs/kyma-graphql-console-ui:0.6.0
+        image: docker.io/hansamann/graphql-console-ui:0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -43,7 +43,7 @@ metadata:
 data:
   config.js: |
     window.backendConfig = {
-      url: 'https://<url_to_console_api'
+      url: 'https://graphql-api.giga.cluster.extend.cx.cloud.sap'
     };
 
 ---
@@ -71,7 +71,7 @@ metadata:
   labels:
     owner: hansamann
 spec:
-  hostname: graphql-console-ui.mega.cluster.extend.cx.cloud.sap
+  hostname: graphql-console-ui.giga.cluster.extend.cx.cloud.sap
   service:
     name: graphql-console-ui
     port: 80

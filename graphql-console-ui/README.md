@@ -6,23 +6,25 @@ Once you've built your docker image and deployed to your Kyma cluster, the UI wi
 
 <img src="resources/ui2.png"/>
 
-## Project setup
+## Deployment to your Kyma Cluster
+You can use the default docker container in `all.yaml` but you will need to change a few settings:
+- make sure the namespace for all resources is correct, we use `stage` by default
+- change the backend url to the graphql-server-api (which needs to be deployed first) in the ConfigMap which is prat of `all.yaml`. 
+- you will most likely also have to change the API resource, e.g. change the hostname to your cluster hostname. 
+
+## Running locally
+
+To run thsi locally, first install via 
+
 ```
 yarn install
 ```
+and then run 
 
-Please note: the backend URL is set via the `public/config.js` file. For development purposes, the backend URL is set to `localhost:3000`. When running the container in the cluster, be sure to replace the config.js file via a ConfigMap. 
-
-### Compiles and hot-reloads for development
 ```
 yarn run serve
 ```
 
-If you run the ui locally, the console-ui-backend is expected at `localhost:3000` - this can be changed via the `.env.development` file. 
+This will start the dev server. 
 
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-Runnung the supplied docker file will build the project and package it up in a production-ready docker container. Please make sure that the `.env.production` file contains the correct console-api backend address. This cannot be changed during container startup, so you currently need to create your own docker image for this. 
+Please note: the backend URL is set via the `public/config.js` file. For development purposes, the backend URL is set to `localhost:3000`. When running the container in the cluster, be sure to replace the config.js file via a ConfigMap. The file `k8s/all.yaml` will replace the config.js via a ConfigMap,be sure to change the ConfigMap settings when you deploy to your cluster. 
