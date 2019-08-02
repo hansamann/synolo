@@ -3,12 +3,13 @@
 export default {
   data() {
     return {
-      apiBase: process.env.VUE_APP_BACKEND,
+      apiBase: backendConfig.url,
       types: []
     };
   },
   methods: {
     restGetTypes() {
+      console.log("apiBase is " + this.apiBase);
       console.log("restGetTypes()");
       var that = this;
       fetch(`${this.apiBase}/types`)

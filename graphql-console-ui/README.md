@@ -11,6 +11,8 @@ Once you've built your docker image and deployed to your Kyma cluster, the UI wi
 yarn install
 ```
 
+Please note: the backend URL is set via the `public/config.js` file. For development purposes, the backend URL is set to `localhost:3000`. When running the container in the cluster, be sure to replace the config.js file via a ConfigMap. 
+
 ### Compiles and hot-reloads for development
 ```
 yarn run serve
