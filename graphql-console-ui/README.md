@@ -9,12 +9,26 @@ Once you've built your docker image and deployed to your Kyma cluster, the UI wi
 ## Deployment to your Kyma Cluster
 You can use the default docker container in `all.yaml` but you will need to change a few settings:
 - make sure the namespace for all resources is correct, we use `stage` by default
-- change the backend url to the graphql-server-api (which needs to be deployed first) in the ConfigMap which is prat of `all.yaml`. 
+- change the backend url to the graphql-server-api (which needs to be deployed first) in the ConfigMap which is part of `all.yaml`. 
 - you will most likely also have to change the API resource, e.g. change the hostname to your cluster hostname. 
+
+Once you have changed the files, use these commands:
+
+```
+kubectl apply -f k8s/all.yaml
+```
+
+At this point you will find a new API resource (exposed, no security) as part of your APIs list in the Kyma console. To wire this new UI to the Kyma console, pick up the API Url and then change the URL in the `graphql-console-ui-cmf.yaml` file. Then also apply this:
+
+```
+kubectl apply -f k8s/graphql-console-ui-cmf.yaml
+```
+
+Et voilà! You should now see a GraphQL section in the Kyma Console, simply reload your console ui. 
 
 ## Running locally
 
-To run thsi locally, first install via 
+To run this locally, first install via 
 
 ```
 yarn install
