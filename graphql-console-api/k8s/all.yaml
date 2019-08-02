@@ -21,7 +21,7 @@ spec:
       serviceAccountName: graphql-api
       containers:
       - name: graphql-api
-        image: gcr.io/sap-hybris-labs/kyma-graphql-api:0.5.0
+        image: docker.io/hansamann/graphql-console-api:0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
@@ -52,7 +52,7 @@ metadata:
   labels:
     owner: hansamann
 spec:
-  hostname: graphql-api.mega.cluster.extend.cx.cloud.sap
+  hostname: graphql-api.giga.cluster.extend.cx.cloud.sap
   service:
     name: graphql-api
     port: 80
