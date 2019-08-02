@@ -1,8 +1,41 @@
 # graphql-console-api
 
-This is the API part for the `graphql-console`. Please note that this does not currently use any security and directly interfaces the kubernetes api server via the node.js k8s APIs. It exposes the capabilities to read and write to the `types` and `resolvers` ConfigMaps as well as allows the user to kill all graphql server pods so that they can be restarted with the updated ConfigMap configuration. 
+This is the API part for the `graphql-console-ui` and it needs to be deployed first. Please note that this does not currently use any security and directly interfaces the kubernetes API server via the node.js k8s APIs. It exposes the capabilities to read and write to the `types` and `resolvers` ConfigMaps as well as allows the user to kill all graphql server pods so that they can be restarted with the updated ConfigMap configuration. 
 
-To change the used K8S namespace for ConfigMap operations, please provide the `K8S_NAMESPACE` environment varible. The default is set to `stage`. 
+To change the used k8s namespace for ConfigMap operations, please provide the `K8S_NAMESPACE` environment varible. The default is set to `stage`. 
+
+## Deployment to your Kyma Cluster
+First, have a look at `k8s/sa.yaml` and check the namespace. Please make sure you're fine with exposing the admin rights to the pods that you will deployed. 
+
+Run 
+
+```
+kubectl apply -f k8s/sa.yaml
+```
+
+Next, apply a few changes to `all.yaml` based on your specific cluster:
+- be sure to change the namespace if you do not want to use the default `stage` namespace. 
+- most likely you will need to change the hostname of the API resource for your specific kyma cluster.
+
+Now, simply run 
+
+```
+kubectl apply -f k8s/all.yaml
+```
+
+Give it a few seconds, then the deployment, service and API resource for the `graphql-console-api` should be running. You can check the API resources and call the URL in the browser - the `/` root should respond with a json output:
+
+```
+{"success":true,"msg":"Ready. Go change the world."}
+```
+
+Also, for example the `/types` path should be available:
+
+```
+{"success":true,"keys":["commercecategory.graphql","commerceimage.graphql","commerceorder.graphql","commerceprice.graphql","commerceproduct.graphql","commerceproductreference.graphql","commercereview.graphql","commercestock.graphql","country.graphql","deliveryaddress.graphql","deliverymode.graphql","language.graphql","orderentry.graphql","root.graphql","weather.graphql"]}
+```
+
+You are now ready to deploy the [graphql-console-ui](../graphql-console-ui/README.md).
 
 ## Run locally
 
