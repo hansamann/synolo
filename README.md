@@ -29,3 +29,12 @@ Here's a quick overview with a description of each sub-project:
 - [__graphql-console-api__](graphql-console-api/README.md): The graphql-api uses the Kubernetes node.js API to load, edit and update the ConfigMaps for types and resolvers. It also enables the graphql-ui to restart the GraphqQL server, which essentially kills all pods of a graphql deployment for reloading them with the latest ConfigMaps. 
 
 Please click on the links above for the specific documentation. 
+
+## Get started
+To get started quickly, we've created public docker images which are referenced from the k8s resource folders of the three sub-projects. Please note that you will need to change a few settings, based on your specific kyma cluster hostname and setup. But it should be fairly straightforward, so just go ahead!
+
+For deploying to your own kyma cluster:
+
+1. Follow [__graphql-server__](graphql-server/README.md) to deploy a default graphql-server deployment
+2. If you want to be able to change the types and resolvers via a kyma add-on also deploy the [__graphql-console-api__](graphql-console-api/README.md) followed by the [__graphql-console-ui__](graphql-console-ui/README.md).
+
