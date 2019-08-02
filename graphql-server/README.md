@@ -60,6 +60,51 @@ KUBECONFIG=~/Downloads/kubeconfig kubectl create configmap graphql-resolvers --f
 KUBECONFIG=~/Downloads/kubeconfig kubectl create configmap graphql-types --from-file=./types/ -n stage
 ```
 
+## Sample queries
+
+The following graphql queries will work out of the box, assuming you've met all the prerequisites and the application connector to Commerce Cloud (with electronics sample data) is successfully setup. 
+
+Query just for the weather via the weather api resolvers
+```
+query {
+ 	weather(city:"Munich") {
+    temp
+  }
+}
+```
+
+Query for both weather and categories with products of Commerce Cloud
+```
+query {
+ 	weather(city:"Munich") {
+    temp
+  }
+  categories {
+    id
+    name
+    products {
+      name
+    }
+  }
+}
+```
+
+Query a category and get product and thunbnail image data
+```
+query {
+  category(id:"brands"){
+    name
+    products {
+      id
+      name 
+      images(format:"thumbnail") {
+        url
+      }
+    }
+  }
+}
+```
+
 ## How to access services e.g. Commerce Cloud via App Connector instance locally
 - Access the kyma UI and enter the namespace you're in
 - click the service instance that you wnat to connect to, e.g. `ec-occ-commerce-webservices-v2-8cd3d-weepy-injury`
