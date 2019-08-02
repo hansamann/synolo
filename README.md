@@ -30,6 +30,11 @@ Here's a quick overview with a description of each sub-project:
 
 Please click on the links above for the specific documentation. 
 
+## Prerequisites
+- a kyma 1.2 cluster, e.g. setup via extend.sap.cx
+- a commerce cloud instance which has been integrated with the kyma cluster. 
+- a namespace - default 'stage' - in the kyma cluster and a deployed app connector instance for the commerce application connector in that namespace.
+
 ## Get started
 To get started quickly, we've created public docker images which are referenced from the k8s resource folders of the three sub-projects. Please note that you will need to change a few settings, based on your specific kyma cluster hostname and setup. But it should be fairly straightforward, so just go ahead!
 
