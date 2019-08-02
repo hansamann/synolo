@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: graphql-server
-        image: gcr.io/sap-hybris-labs/kyma-graphql-server:0.7.0
+        image: docker.io/hansamann/graphql-server:0.1
         command: ['sh', '-c', 'cp /resolvers/* /usr/src/app/resolvers/ && yarn run start']
         args : ["1000"]
         imagePullPolicy: Always
@@ -31,6 +31,9 @@ spec:
           mountPath: /resolvers/
         - name: types
           mountPath: /usr/src/app/types/
+        env:
+        - name: OPENWEATHER_APP_ID
+          value: <ADD_OPENWEATHER_APP_ID>
       volumes:
       - name: resolvers
         configMap:
@@ -64,7 +67,7 @@ metadata:
   labels:
     owner: hansamann
 spec:
-  hostname: graphql-server.mega.cluster.extend.cx.cloud.sap
+  hostname: graphql-server.giga.cluster.extend.cx.cloud.sap
   service:
     name: graphql-server
     port: 80

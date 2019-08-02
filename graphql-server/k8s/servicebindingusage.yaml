@@ -3,7 +3,7 @@ kind: ServiceBindingUsage
 metadata:
   labels:
     deployment: graphql-server
-    ServiceBinding: otivzjvgie
+    ServiceBinding: otvbobnghv
   name: graphql-server-sbu
   namespace: stage
 spec:
@@ -11,7 +11,7 @@ spec:
     envPrefix:
       name: ""
   serviceBindingRef:
-    name: otivzjvgie
+    name: otvbobnghv
   usedBy:
     kind: deployment
     name: graphql-server

@@ -17,11 +17,14 @@ If the graphql schema and resolvers are in sync, as well as the two env variable
 ## Deployment to a Kyma cluster
 For deployment to a kyma cluster, have a look at the `k8s` directory. You will need to modify the k8s files to your local environment. This applies especially to the service binding usage resource. We recommend to create a kyma lambda that uses the Commerce App Connector and inspect the lambda function to figure out the details for the `servicebindingusage.yaml`. The ServiceBindingUsage resource is later responsible for automatically adding the GATEWAY_URL env variable to your pods so they can find the application connector services. 
 
+Also, in all.yaml, please set the `OPENWEATHER_APP_ID` env variable. For this you will first need to create a free open weather account. 
+
 Once the ServiceBindingUsage is setup, modify the `all.yaml` file to your needs and then execute it via `kubectl`:
 
 ```
 kubectl apply -f k8s/all.yaml
 ```
+
 
 ## ConfigMaps from Folder
 If you wish to overwrite the `types` and `resolvers` directories, you need to create ConfigMaps in the namespace you've deployed the GraphQL server. 
