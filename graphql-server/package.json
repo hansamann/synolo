@@ -8,7 +8,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "got": "^9.6.0",
+    "got": "^11.8.5",
     "graphql-yoga": "^1.17.4",
     "merge-graphql-schemas": "^1.5.8"
   }
